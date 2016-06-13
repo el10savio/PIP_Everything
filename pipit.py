@@ -3,6 +3,7 @@ import re
 import os
 from bs4 import BeautifulSoup
 
+#Convert words to list 
 def getWords(text):
     return re.compile('\w+').findall(text)
 def words(text): return re.findall('[a-z]+', text.lower()) 
@@ -25,11 +26,8 @@ chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
 # drop blank lines
 text = '\n'.join(chunk for chunk in chunks if chunk)
 
-print(text)
-print('*****************************************************')
-
-#TODO: 1.Split text words into a list.
-#      2.Run os.system pip command (along with --upgrade)
+#print(text)
+#print('*****************************************************')
 
 packages = getWords(text)
 for i in packages:
@@ -37,4 +35,3 @@ for i in packages:
 		  command ="sudo pip install --upgrade "+i
 		  os.system(command)
     
-
